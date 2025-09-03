@@ -1,29 +1,11 @@
-import { useState } from 'react';
+import type { UserInputData } from '@/types/investment';
 
-interface UserInputData {
-  initialInvestment: number;
-  annualInvestment: number;
-  expectedReturn: number;
-  duration: number;
+interface UserInputProps {
+  userInput: UserInputData;
+  onInputChange: (inputIdentifier: string, newValue: number) => void;
 }
 
-export const UserInput = () => {
-  const [userInput, setUserInput] = useState<UserInputData>({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-
-  const handleChange = (inputIdentifier: string, newValue: number) => {
-    setUserInput((prevInput) => {
-      return {
-        ...prevInput,
-        [inputIdentifier]: newValue,
-      };
-    });
-  };
-
+export const UserInput: React.FC<UserInputProps> = ({ userInput, onInputChange }) => {
   return (
     <section id='user-input'>
       <div className='input-group'>
@@ -34,7 +16,7 @@ export const UserInput = () => {
             id='initial-investment'
             required
             value={userInput.initialInvestment}
-            onChange={(event) => handleChange('initialInvestment', event.target.valueAsNumber)}
+            onChange={(event) => onInputChange('initialInvestment', event.target.valueAsNumber)}
           />
         </p>
         <p>
@@ -44,7 +26,7 @@ export const UserInput = () => {
             id='yearly-contribution'
             required
             value={userInput.annualInvestment}
-            onChange={(event) => handleChange('annualInvestment', event.target.valueAsNumber)}
+            onChange={(event) => onInputChange('annualInvestment', event.target.valueAsNumber)}
           />
         </p>
       </div>
@@ -57,7 +39,7 @@ export const UserInput = () => {
             id='expected-return'
             required
             value={userInput.expectedReturn}
-            onChange={(event) => handleChange('expectedReturn', event.target.valueAsNumber)}
+            onChange={(event) => onInputChange('expectedReturn', event.target.valueAsNumber)}
           />
         </p>
         <p>
@@ -67,7 +49,7 @@ export const UserInput = () => {
             id='duration'
             required
             value={userInput.duration}
-            onChange={(event) => handleChange('duration', event.target.valueAsNumber)}
+            onChange={(event) => onInputChange('duration', event.target.valueAsNumber)}
           />
         </p>
       </div>
