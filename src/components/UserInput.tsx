@@ -2,7 +2,7 @@ import type { UserInputData } from '@/types/investment';
 
 interface UserInputProps {
   userInput: UserInputData;
-  onInputChange: (inputIdentifier: string, newValue: number) => void;
+  onInputChange: (inputIdentifier: string, newValue: string) => void;
 }
 
 export const UserInput: React.FC<UserInputProps> = ({ userInput, onInputChange }) => {
@@ -15,8 +15,9 @@ export const UserInput: React.FC<UserInputProps> = ({ userInput, onInputChange }
             type='number'
             id='initial-investment'
             required
+            min={0}
             value={userInput.initialInvestment}
-            onChange={(event) => onInputChange('initialInvestment', event.target.valueAsNumber)}
+            onChange={(event) => onInputChange('initialInvestment', event.target.value)}
           />
         </p>
         <p>
@@ -25,8 +26,9 @@ export const UserInput: React.FC<UserInputProps> = ({ userInput, onInputChange }
             type='number'
             id='yearly-contribution'
             required
+            min={0}
             value={userInput.annualInvestment}
-            onChange={(event) => onInputChange('annualInvestment', event.target.valueAsNumber)}
+            onChange={(event) => onInputChange('annualInvestment', event.target.value)}
           />
         </p>
       </div>
@@ -38,8 +40,9 @@ export const UserInput: React.FC<UserInputProps> = ({ userInput, onInputChange }
             type='number'
             id='expected-return'
             required
+            min={0}
             value={userInput.expectedReturn}
-            onChange={(event) => onInputChange('expectedReturn', event.target.valueAsNumber)}
+            onChange={(event) => onInputChange('expectedReturn', event.target.value)}
           />
         </p>
         <p>
@@ -48,8 +51,9 @@ export const UserInput: React.FC<UserInputProps> = ({ userInput, onInputChange }
             type='number'
             id='duration'
             required
+            min={0}
             value={userInput.duration}
-            onChange={(event) => onInputChange('duration', event.target.valueAsNumber)}
+            onChange={(event) => onInputChange('duration', event.target.value)}
           />
         </p>
       </div>

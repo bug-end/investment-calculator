@@ -1,3 +1,12 @@
+import type { UserInputData } from '@/types/investment';
+
+interface InvestmentResults {
+  year: number;
+  interest: number;
+  valueEndOfYear: number;
+  annualInvestment: number;
+}
+
 // This function expects a JS object as an argument
 // The object should contain the following properties
 // - initialInvestment: The initial investment amount
@@ -9,13 +18,8 @@ export function calculateInvestmentResults({
   annualInvestment,
   expectedReturn,
   duration,
-}: {
-  initialInvestment: number;
-  annualInvestment: number;
-  expectedReturn: number;
-  duration: number;
-}) {
-  const annualData = [];
+}: UserInputData) {
+  const annualData: InvestmentResults[] = [];
   let investmentValue = initialInvestment;
 
   for (let i = 0; i < duration; i++) {

@@ -14,22 +14,20 @@ function App() {
     duration: 10,
   });
 
-  const handleInputChange = (inputIdentifier: string, newValue: number) => {
+  const handleInputChange = (inputIdentifier: string, newValue: string) => {
     setUserInput((prevInput) => {
       return {
         ...prevInput,
-        [inputIdentifier]: newValue,
+        [inputIdentifier]: +newValue,
       };
     });
   };
-
-  console.log(userInput);
 
   return (
     <>
       <Header />
       <UserInput onInputChange={handleInputChange} userInput={userInput} />
-      <Results />
+      <Results userInput={userInput} />
     </>
   );
 }
