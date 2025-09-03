@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-interface UserInput {
+interface UserInputData {
   initialInvestment: number;
   annualInvestment: number;
   expectedReturn: number;
@@ -8,7 +8,7 @@ interface UserInput {
 }
 
 export const UserInput = () => {
-  const [userInput, setUserInput] = useState<UserInput>({
+  const [userInput, setUserInput] = useState<UserInputData>({
     initialInvestment: 10000,
     annualInvestment: 1200,
     expectedReturn: 6,
