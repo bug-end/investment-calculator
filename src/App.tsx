@@ -23,11 +23,17 @@ function App() {
     });
   };
 
+  const isValidInput = userInput.duration >= 1;
+
   return (
     <>
       <Header />
       <UserInput onInputChange={handleInputChange} userInput={userInput} />
-      <Results userInput={userInput} />
+      {isValidInput ? (
+        <Results userInput={userInput} />
+      ) : (
+        <p className='center'>Invalid input. Please check your values.</p>
+      )}
     </>
   );
 }
